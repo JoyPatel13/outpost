@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { TooltipProvider } from "radix-ui/tooltip";
+import { Toaster } from "sonner";
+import AppShell from "@/components/AppShell";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,9 +17,9 @@ const geistMono = Geist_Mono({
 
 
 const bricolage = Bricolage_Grotesque({
-  variable : "--font-display",
+  variable: "--font-display",
   subsets: ["latin"],
-  axes : ["opsz"],
+  axes: ["opsz"],
 })
 
 export const metadata: Metadata = {
@@ -30,7 +33,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <TooltipProvider>
+          <AppShell>
+
+            {children}
+          </AppShell>
+        </TooltipProvider>
+        <Toaster richColors></Toaster>
+      </body>
     </html>
   );
 }
