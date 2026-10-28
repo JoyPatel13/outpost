@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button';
+import { Show, SignInButton } from '@clerk/nextjs';
 
 const SiteHeader = () => {
   const isSignedIn = false;
@@ -13,7 +14,7 @@ const SiteHeader = () => {
 
         <Image src="/brand/logo-navbar-dark.png" alt='Outpost' width={314} height={160} className='h-9 w-auto' priority></Image>
       </Link>
-        {isLandingPage && (
+      {isLandingPage && (
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <Link href="#product" className="transition-colors hover:text-foreground">Product</Link>
           <Link href="#how-it-works" className="transition-colors hover:text-foreground">How it works</Link>
@@ -21,9 +22,13 @@ const SiteHeader = () => {
         </nav>
       )}
       <div>
-        <Button asChild variant="ghost" size="sm">
-          <Link href="/sign-in">Sign in</Link>
-        </Button>
+        <Show when='signed-out'>
+          <SignInButton mode='modal'>
+
+            <Button  variant="ghost" size="sm">Sign In
+            </Button>
+          </SignInButton>
+        </Show>
       </div>
 
     </header>
