@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button';
-import { OrganizationSwitcher, Show, SignInButton, SignOutButton, SignUpButton, useAuth, UserButton } from '@clerk/nextjs';
+import { OrganizationSwitcher, Show, SignInButton, SignUpButton, useAuth, UserButton } from '@clerk/nextjs';
 import { usePathname } from 'next/navigation';
 
 const SiteHeader = () => {
