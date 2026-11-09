@@ -178,13 +178,11 @@
     transform: perspective(1400px) translateY(0) rotateX(0deg) scale(1);
   }
 }
-
-@utility scroll-tilt {
-  @supports (animation-timeline: scroll()) {
-    @media (prefers-reduced-motion: no-preference) {
-      animation: scroll-tilt linear both;
-      animation-timeline: scroll(root);
-      animation-range: 0 500px;
-    }
+@supports (animation-timeline: scroll()) {
+  .scroll-tilt {
+    animation: scroll-tilt linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 500px;
+    will-change: transform;
   }
 }
